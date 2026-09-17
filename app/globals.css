@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+
+/* Use .dark class for Tailwind dark: utilities */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  background: rgb(255, 255, 255);
+  color: #0f172a;
+
+  transition:
+    background-color 500ms ease,
+    color 500ms ease;
+
+  cursor: none;
+}
+
+/* Dark theme */
+html.dark body {
+  background: #080b12;
+  color: #f8fafc;
+}
+
+/* =========================
+   Animated Gradient Blobs
+   ========================= */
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 12s infinite ease-in-out;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* =========================
+   Noise Texture
+   ========================= */
+
+.noise {
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+}
+
+/* Keep the custom cursor on pointer devices only. */
+.custom-cursor {
+  display: block;
+}
+
+.font-roboto-slab {
+  font-family: var(--font-roboto-slab), Georgia, serif;
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-blob {
+    animation: none;
+  }
+}
+
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+img {
+  display: block;
+}
